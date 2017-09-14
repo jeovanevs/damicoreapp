@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: hello.FileUploadIntegrationTests
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 22.372 sec - in hello.FileUploadIntegrationTests
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 31.09 sec - in hello.FileUploadIntegrationTests
