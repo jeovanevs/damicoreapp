@@ -58,7 +58,7 @@ public class FileUploadController {
 
         storageService.store(file);
         redirectAttributes.addFlashAttribute("message",
-                "Seu arquivo " + file.getOriginalFilename() + "foi carregado com sucesso!");
+               "Seu arquivo foi carregado com sucesso! " + file.getOriginalFilename());
 
         return "redirect:/";
     }
