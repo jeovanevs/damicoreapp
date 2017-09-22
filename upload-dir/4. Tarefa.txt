@@ -1,0 +1,11 @@
+A construção de VANTs surgiu para atividades militares, mas hoje já é bastante utilizado no meio civil. Percebe-se sua aplicação em diversas áreas como na agricultura, vigilância ou até mesmo para entretenimento. Com o avanço da tecnologia e a necessidade de integrar coisas ao nosso convívio social, a IoT vem permitindo que VANTs se comuniquem entre si e transmitam dados de voos para a internet. 
+O principal objetivo deste trabalho é o Desenvolvimento de uma PlataformaWeb. Essa plataforma terá uma interface visual de design responsivo com o propósito de guardar informações de voos de VANT para realizar mineração de dados, gerando assim conhecimento. Considero meu projeto interessante, inovador, válido e cativante.
+
+Sigo com o cronograma:
+
+Revisão Bibliográfica: Uma revisão abrangente da literatura será realizada e atualizada ao longo do desenvolvimento da pesquisa.
+Desenvolvimento: Criação de uma plataforma na nuvem.
+Desenvolvimento: Desenvolver o protótipo de interface.
+Desenvolvimento: Desenvolver uma primeira versão do sistema na nuvem integrando Iot e VANT.
+Validação: Validação da plataforma e desenvolvimento de testes.
+Avaliação Final: Avaliação final do sistema e ajustes no projeto do software proposto.

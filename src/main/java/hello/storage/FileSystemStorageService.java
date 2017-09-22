@@ -31,19 +31,19 @@ public class FileSystemStorageService implements StorageService {
         String filename = StringUtils.cleanPath(file.getOriginalFilename());
         try {
             if (file.isEmpty()) {
-                throw new StorageException("Failed to store empty file " + filename);
+                throw new StorageException("Falha ao armazenar aquivo " + filename);
             }
             if (filename.contains("..")) {
                 // This is a security check
                 throw new StorageException(
-                        "Cannot store file with relative path outside current directory "
+                        "Não é possível armazenar o arquivo "
                                 + filename);
             }
             Files.copy(file.getInputStream(), this.rootLocation.resolve(filename),
                     StandardCopyOption.REPLACE_EXISTING);
         }
         catch (IOException e) {
-            throw new StorageException("Failed to store file " + filename, e);
+            throw new StorageException("Falha ao armazenar arquivo " + filename, e);
         }
     }
 
@@ -55,7 +55,7 @@ public class FileSystemStorageService implements StorageService {
                     .map(path -> this.rootLocation.relativize(path));
         }
         catch (IOException e) {
-            throw new StorageException("Failed to read stored files", e);
+            throw new StorageException("Falha ao ler os arquivos", e);
         }
 
     }
@@ -75,12 +75,12 @@ public class FileSystemStorageService implements StorageService {
             }
             else {
                 throw new StorageFileNotFoundException(
-                        "Could not read file: " + filename);
+                        "Não é possível ler o arquivo: " + filename);
 
             }
         }
         catch (MalformedURLException e) {
-            throw new StorageFileNotFoundException("Could not read file: " + filename, e);
+            throw new StorageFileNotFoundException("Não foi possível ler o arquivo: " + filename, e);
         }
     }
 
@@ -95,7 +95,7 @@ public class FileSystemStorageService implements StorageService {
             Files.createDirectories(rootLocation);
         }
         catch (IOException e) {
-            throw new StorageException("Could not initialize storage", e);
+            throw new StorageException("Não foi possível armazenar", e);
         }
     }
 }

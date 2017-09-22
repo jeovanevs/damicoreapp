@@ -1,0 +1,35 @@
+Requisito: python 2.7
+
+-------------------------------------------------------------------------------------------
+--> Instruções para instalação do DAMICORE no Ubuntu:
+
+Baixar e extrair o DAMICORE -> https://gitlab.com/adaptsys/damicorepy
+
+
+# Instalar o pip (get-pip.py) -> https://pip.pypa.io/en/stable/installing/
+	sudo python get-pip.py
+
+# Instalar dependências
+	sudo apt-get install -y libigraph0-dev python-igraph libcairo2-dev python-cairo
+	sudo pip install numpy munkres
+
+-------------------------------------------------------------------------------------------
+--> Instrução de execução básica do DAMICORE:
+
+Ir no diretorio path/to/damicorepy/damicore/ e executar
+	./damicore.py path/to/data --results-dir path/to/results -c gzip
+
+-------------------------------------------------------------------------------------------
+--> Instruções para execução do FigTree no Ubuntu:
+
+# Instalar Java
+	sudo apt-get install openjdk-8-jre
+
+Baixar e extrair a ferramenta FigTree -> http://tree.bio.ed.ac.uk/software/figtree/ (arquivo na barra lateral com extensão tar.gz)
+Ir no diretório path/to/FigTree_v1.4.2/lib/ e habilitar o arquivo figtree.jar como executável:
+'-> clicar com o botão direito > propriedades > permissões > checar como executável
+
+Usar o arquivo fitree.jar para ver a árvore gerada no resultado (arquivos com extensão .newick)
+
+Opção: utilizar o ETE toolkit (python) -> http://etetoolkit.org/
+
