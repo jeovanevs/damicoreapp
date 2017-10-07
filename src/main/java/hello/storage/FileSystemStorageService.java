@@ -1,5 +1,6 @@
 package hello.storage;
 
+import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.nio.file.Files;
@@ -7,6 +8,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.stream.Stream;
+import java.util.zip.GZIPInputStream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -29,6 +31,8 @@ public class FileSystemStorageService implements StorageService {
     @Override
     public void store(MultipartFile file) {
         String filename = StringUtils.cleanPath(file.getOriginalFilename());
+        // aqui pode tratar a extensao do arquivo com substring pegando os 3 ultimos caracteres
+        //
         try {
             if (file.isEmpty()) {
                 throw new StorageException("Falha ao armazenar aquivo " + filename);
@@ -39,8 +43,14 @@ public class FileSystemStorageService implements StorageService {
                         "Não é possível armazenar o arquivo "
                                 + filename);
             }
+            System.out.println(this.rootLocation.resolve(filename).toString());
             Files.copy(file.getInputStream(), this.rootLocation.resolve(filename),
                     StandardCopyOption.REPLACE_EXISTING);
+        
+            //descompactar arquivo
+            // Ex. formato saida
+            // filename = academia bd ok.rtf
+            //this.rootLocation.resolve(filename) = upload-dir/academia bd ok.rtf
         }
         catch (IOException e) {
             throw new StorageException("Falha ao armazenar arquivo " + filename, e);
