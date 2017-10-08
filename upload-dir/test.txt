@@ -1,0 +1,3 @@
+Exception in thread "main" java.lang.NullPointerException
+	at freq.Freq.openBin(Freq.java:156)
+	at freq.Freq.main(Freq.java:52)

@@ -96,8 +96,8 @@ public class FileUploadController {
         //executar script 
         redirectAttributes.addFlashAttribute("message",
 
-          // "Diretório padrão: " + x );        
-                "Seu arquivo " + file.getOriginalFilename() + " foi carregado com sucesso! " );
+           "Diretório padrão: " + x );        
+          //      "Seu arquivo " + file.getOriginalFilename() + " foi carregado com sucesso! " );
 //        System.out.println(this.rootLocation.resolve(filename).toString());
 
 
