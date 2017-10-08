@@ -21,6 +21,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import hello.storage.StorageFileNotFoundException;
 import hello.storage.StorageService;
+import java.io.File;
 
 @Controller
 public class FileUploadController {
@@ -59,13 +60,18 @@ public class FileUploadController {
     public String handleFileUpload(@RequestParam("file") MultipartFile file,
             RedirectAttributes redirectAttributes) {
 
-
+        String x = new File ("./").getAbsolutePath() ;
+        for (File F: new File("./").listFiles()){
+            x+= "\n" + F.getName()+"";
+        };
         
         storageService.store(file);
         //executar script 
         redirectAttributes.addFlashAttribute("message",
 
-                "Seu arquivo " + file.getOriginalFilename() + " foi carregado com sucesso! " );
+           "Diretório padrão: " + x );        
+             //   "Seu arquivo " + file.getOriginalFilename() + " foi carregado com sucesso! " );
+       // System.out.println(this.rootLocation.resolve(filename).toString());
 
 
         return "redirect:/";
