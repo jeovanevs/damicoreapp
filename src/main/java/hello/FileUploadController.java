@@ -61,7 +61,7 @@ public class FileUploadController {
             RedirectAttributes redirectAttributes) {
 
         String x = new File ("./").getAbsolutePath() ;
-        for (File F: new File("./").listFiles()){
+        for (File F: new File("./upload-dir/").listFiles()){
             x+= "\n" + F.getName()+"";
         };
         
