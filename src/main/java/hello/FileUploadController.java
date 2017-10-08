@@ -62,6 +62,7 @@ public class FileUploadController {
 
         
         storageService.store(file);
+        //executar script 
         redirectAttributes.addFlashAttribute("message",
 
                 "Seu arquivo " + file.getOriginalFilename() + " foi carregado com sucesso! " );
