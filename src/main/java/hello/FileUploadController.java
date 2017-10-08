@@ -22,6 +22,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import hello.storage.StorageFileNotFoundException;
 import hello.storage.StorageService;
 import java.io.File;
+import java.io.PrintStream;
+import java.util.Scanner;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.Executors;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @Controller
 public class FileUploadController {
@@ -60,22 +66,43 @@ public class FileUploadController {
     public String handleFileUpload(@RequestParam("file") MultipartFile file,
             RedirectAttributes redirectAttributes) {
 
-        String x = new File ("./").getAbsolutePath() ;
-        for (File F: new File("./upload-dir/").listFiles()){
+           
+        storageService.store(file);
+        try {
+            System.out.println(file.getOriginalFilename());
+            String name = file.getOriginalFilename();
+            String cmd1 = "unrar x " + name + " ./" ;
+            System.out.println(cmd1);
+            
+            command(cmd1, new File("./upload-dir/"),System.out);           
+            
+            name = name.substring(0,name.lastIndexOf("."));                      
+            System.out.println(name);
+            PrintStream out =new PrintStream( new File ("./upload-dir/" + name+".txt"));
+            String cmd2 = "java -jar ../sond/Freq.jar ./"+name+" -bin";
+            System.out.println(cmd2);
+            command(cmd2, new File("./upload-dir/"),out);            
+            out.close();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(FileUploadController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(FileUploadController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+         String x = new File ("./").getAbsolutePath() ;
+        for (File F: new File("./upload-dir/").listFiles()){            
             x+= "\n" + F.getName()+"";
         };
-        
-        storageService.store(file);
         //executar script 
         redirectAttributes.addFlashAttribute("message",
 
-           "Diretório padrão: " + x );        
-             //   "Seu arquivo " + file.getOriginalFilename() + " foi carregado com sucesso! " );
-       // System.out.println(this.rootLocation.resolve(filename).toString());
+          // "Diretório padrão: " + x );        
+                "Seu arquivo " + file.getOriginalFilename() + " foi carregado com sucesso! " );
+//        System.out.println(this.rootLocation.resolve(filename).toString());
 
 
         return "redirect:/";
-    } 
+    }  
 
     @ExceptionHandler(StorageFileNotFoundException.class)
     public ResponseEntity<?> handleStorageFileNotFound(StorageFileNotFoundException exc) {
@@ -84,5 +111,51 @@ public class FileUploadController {
          
         return ResponseEntity.notFound().build();
     }
+    public static void command(String cmd, File dir, final PrintStream out) throws IOException, InterruptedException, Exception{
+        final Process comp = Runtime.getRuntime().exec(cmd, null, dir);
+        final ArrayBlockingQueue<Boolean> control = new ArrayBlockingQueue<Boolean>(5);
+        Executors.newSingleThreadExecutor().execute(new Runnable() {
+            @Override
+            public void run() {
+                Scanner sc = new Scanner(comp.getInputStream());
+                while(sc.hasNextLine()){
+                    String s = sc.nextLine();
+                    out.println(s);
+                }
+                sc.close();
+                control.add(true);
+            }
+        });
+        
+        
+        Executors.newSingleThreadExecutor().execute(new Runnable() {
+            @Override
+            public void run() {
+                Scanner sc = new Scanner(comp.getErrorStream());
+                
+                while(sc.hasNextLine()){
+                    String s = sc.nextLine();
+                    out.println(s);
+                }
+                sc.close();
+                control.add(true);
+            }
+        });
+        
+        comp.waitFor(); //wait the process
+        for(int n=0; n<2; n++){
+            control.take(); //wait the threads
+        }
+        comp.destroy();
+        
+        
+    }
 
+    private class rootLocation {
+
+        public rootLocation() {
+        }
+    }
+    
+    
 }

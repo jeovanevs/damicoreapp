@@ -1,7 +1,10 @@
 hello\FileUploadController.class
 hello\storage\StorageException.class
+hello\FileUploadController$rootLocation.class
+hello\storage\FileSystemStorageService.class
+hello\FileUploadController$2.class
 hello\storage\StorageProperties.class
 hello\storage\StorageFileNotFoundException.class
 hello\Application.class
-hello\storage\FileSystemStorageService.class
+hello\FileUploadController$1.class
 hello\storage\StorageService.class
