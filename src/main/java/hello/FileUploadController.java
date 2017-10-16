@@ -116,9 +116,9 @@ public class FileUploadController {
             System.out.println(name2);
             
             try (PrintStream out = new PrintStream( new File ("./upload-dir/" + name2+".txt"))) {
-                String project = "/home/pc/NetBeansProjects/damicoreapp/";
+                String project = "/home/jesimarsa1988/damicoreapp/";
                 String cmd2 = project + "damicorepy/damicore/damicore.py "+ project + "upload-dir/" + name2 + " --results-dir " + project+ "upload-dir/results -c "+compr ;
-                
+
                 //String cmd2 = "java -jar ../sond/Freq.jar ./"+name+" -bin";
                 System.out.println(cmd2);
                 command(cmd2, new File("./upload-dir/"),out);
