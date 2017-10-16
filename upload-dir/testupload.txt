@@ -1,3 +1,14 @@
-Exception in thread "main" java.lang.NullPointerException
-	at freq.Freq.openBin(Freq.java:156)
-	at freq.Freq.main(Freq.java:52)
+usage: damicore.py [-h] [-o OUTPUT] [--serial] [--parallel] [-v]
+                   [--no-verbose] [-V] [--complete] [-c {gzip,bzip2,zlib,bz2}]
+                   [--matrix-format {raw,csv,phylip}] [-L LEVEL]
+                   [-O MODEL_ORDER] [-M MEMORY] [-R {restart,cutoff,freeze}]
+                   [--source-mode] [--matrix-mode] [--normalize-matrix]
+                   [--normalize-weights] [-n NUM_CLUSTERS]
+                   [--community-detection {fast,newman-modularity,betweenness,walktrap,tree-modularity,correlation-modularity,optimal}]
+                   [--ncd-output FILE] [--tree-output FILE]
+                   [--graph-image FILE] [--results-dir DIR]
+                   [--compare-to FILE]
+                   [--partition-index {adjusted-fowlkes-mallows,adjusted-left-wallace,adjusted-rand,adjusted-right-wallace,adjusted-wallace,afm,all,classification,f1,fm,fowlkes-mallows,incongruence,jaccard,left-wallace,matthews,mi,mutual-information,nid,nmi-geom,nmi-joint,nmi-max,nmi-mean,nmi-min,normalized-incongruence,nvi,precision,rand,recall,right-wallace,variation-of-information,vi,wallace}]
+                   [--partition-output FILE]
+                   input [input ...]
+damicore.py: error: argument -c/--compressor: invalid choice: 'null' (choose from 'gzip', 'bzip2', 'zlib', 'bz2')

@@ -8,14 +8,28 @@
 	</div>
 
 	<div>
+            <h1>Bem vindo ao DamicoreApp</h1>
 		<form method="POST" enctype="multipart/form-data" action="/">
 			<table>
-			    <tr><td><b>Bem vindo ao DamicoreApp</b></td></tr>
                             <tr><td>Arquivo para upload:</td><td><input type="file" name="file" /></td></tr>
-			    <tr><td></td><td><input type="submit" value="Upload" /></td></tr>
-                            <tr><td></td><td><input type="submit" value="Exibir Resultado" /></td></tr>
+			
+                            <tr>  Qual compressor deseja usar? </tr> 
+                            <select name="compressor">
+                                <option value="zlib">zlib</option>
+                                <option value="gzip">gzip</option>
+                                <option value="bz2">bz2</option>
+                                <option value="bzip2">bzip2</option>
+                                <option value="ppmd">ppmd</option>
+                                <option value="paq8">paq8</option>
+                            </select>
+                            
+                            <tr><td></td><td><input type="submit" value="Upload" /></td></tr>
 			</table>
 		</form>
+            
+                
+
+                
 	</div>
 
 	<div>

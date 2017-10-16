@@ -1,0 +1,5 @@
+/home/nanda/Downloads/GD
+--results-dir
+testdata/results
+-c
+gzip

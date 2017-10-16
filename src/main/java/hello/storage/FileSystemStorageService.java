@@ -31,14 +31,13 @@ public class FileSystemStorageService implements StorageService {
     @Override
     public void store(MultipartFile file) {
         String filename = StringUtils.cleanPath(file.getOriginalFilename());
-        // aqui pode tratar a extensao do arquivo com substring pegando os 3 ultimos caracteres
-        //
+
         try {
             if (file.isEmpty()) {
                 throw new StorageException("Falha ao armazenar aquivo " + filename);
             }
             if (filename.contains("..")) {
-                // This is a security check
+
                 throw new StorageException(
                         "Não é possível armazenar o arquivo "
                                 + filename);
@@ -46,11 +45,7 @@ public class FileSystemStorageService implements StorageService {
             System.out.println(this.rootLocation.resolve(filename).toString());
             Files.copy(file.getInputStream(), this.rootLocation.resolve(filename),
                     StandardCopyOption.REPLACE_EXISTING);
-        
-            //descompactar arquivo
-            // Ex. formato saida
-            // filename = academia bd ok.rtf
-            //this.rootLocation.resolve(filename) = upload-dir/academia bd ok.rtf
+
         }
         catch (IOException e) {
             throw new StorageException("Falha ao armazenar arquivo " + filename, e);
@@ -60,6 +55,7 @@ public class FileSystemStorageService implements StorageService {
     @Override
     public Stream<Path> loadAll() {
         try {
+
             return Files.walk(this.rootLocation, 1)
                     .filter(path -> !path.equals(this.rootLocation))
                     .map(path -> this.rootLocation.relativize(path));

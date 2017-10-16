@@ -1,0 +1,5 @@
+testdata/planets
+--results-dir
+testdata/results
+-c
+gzip
