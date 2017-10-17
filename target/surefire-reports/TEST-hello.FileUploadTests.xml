@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="hello.FileUploadTests" time="3.245" tests="3" errors="0" skipped="0" failures="0">
+<testsuite name="hello.FileUploadTests" time="4.253" tests="3" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/home/nanda/jdk1.8.0_141/jre/lib/amd64"/>
@@ -59,7 +59,7 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase name="shouldSaveUploadedFile" classname="hello.FileUploadTests" time="0.425"/>
-  <testcase name="should404WhenMissingFile" classname="hello.FileUploadTests" time="0.032"/>
-  <testcase name="shouldListAllFiles" classname="hello.FileUploadTests" time="2.788"/>
+  <testcase name="shouldSaveUploadedFile" classname="hello.FileUploadTests" time="0.708"/>
+  <testcase name="should404WhenMissingFile" classname="hello.FileUploadTests" time="0.35"/>
+  <testcase name="shouldListAllFiles" classname="hello.FileUploadTests" time="3.195"/>
 </testsuite>
