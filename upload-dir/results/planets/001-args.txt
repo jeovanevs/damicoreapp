@@ -1,0 +1,5 @@
+/home/nanda/NetBeansProjects/damicoreapp/upload-dir/planets
+--results-dir
+/home/nanda/NetBeansProjects/damicoreapp/upload-dir/results
+-c
+zlib

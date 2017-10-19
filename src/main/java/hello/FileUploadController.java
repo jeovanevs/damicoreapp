@@ -92,34 +92,35 @@ public class FileUploadController {
             String compr = request.getParameter("compressor");   
             
          
-            if (new File("/home/ubuntu/damicoreapp/upload-dir/"+ name2).exists()){          
+            if (new File("./upload-dir/"+ name2).exists()){          
                 String cmdrm = "rm -rf " + name2;
                 
                 System.out.println(cmdrm);
             
-                command(cmdrm, new File("/home/ubuntu/damicoreapp/upload-dir/"),System.out);     
+                command(cmdrm, new File("./upload-dir/"),System.out);     
                 
             }
             
             String cmd1 = "unzip -x " + name;
             System.out.println(cmd1);
             
-            command(cmd1, new File("/home/ubuntu/damicoreapp/upload-dir/"),System.out);           
+            command(cmd1, new File("./upload-dir/"),System.out);           
             
                     
             System.out.println(name2);
             
-            try (PrintStream out = new PrintStream( new File ("/home/ubuntu/damicoreapp/upload-dir/" + name2+".txt"))) {
+              
+            try (PrintStream out = new PrintStream( new File ("./upload-dir/" + name2+".txt"))) {
                 String project = "/home/ubuntu/damicoreapp/";
-                String cmd2 = project + "damicorepy/damicore/damicore.py "+ project + "upload-dir/" + name2 + " --results-dir " + project+ "upload-dir/results -c "+compr ;
+                String cmd2 = project + "damicorepy/damicore/damicore.py "+ project + "upload-dir/" + name2 + " --results-dir " + project+ "upload-dir/results -c "+compr ;    
                 
 
                 System.out.println(cmd2);
-                command(cmd2, new File("/home/ubuntu/damicoreapp/upload-dir/"),out);
+                command(cmd2, new File("./upload-dir/"),out);
             }
             String cmdzip = "zip -r " + name2+"-results.zip ./results/"+name2;             
             System.out.println(cmdzip);
-            command(cmdzip, new File("/home/ubuntu/damicoreapp/upload-dir/"),System.out);     
+            command(cmdzip, new File("./upload-dir/"),System.out);     
             
         } catch (InterruptedException ex) {
             Logger.getLogger(FileUploadController.class.getName()).log(Level.SEVERE, null, ex);
